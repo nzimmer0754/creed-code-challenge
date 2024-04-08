@@ -61,7 +61,8 @@ export class PodcasteController {
         error: error,
       };
     }
-  } // this method returns an object of type PodcastFilterResponse, it takes in an argument of type Request
+  }
+  // this method returns an object of type PodcastFilterResponse, it takes in an argument of type Request
 
   // add additional controllers below to either post or delete data from the pocasts table
 }

@@ -2,13 +2,40 @@
 
 This application is to test an individuals knowledge of javascript/node.
 
+## VIDEO RESOURCES
+* [Node.js Crash Course](https://www.youtube.com/watch?v=U8XF6AFGqlc)
+* [NEST.js Crash Course](https://www.youtube.com/watch?v=wqhNoDE6pb4)
+
+## Commands To use in the terminal
+* ``` nest g resource <resource-name> ```
+    * This will prompt ask you which architect you want to use
+        *  REST API (Application built on REST API)
+           * REST API (like the menu) defines a set of rules for how different software applications can talk to each other over the internet. It uses standard commands, like GET (fetch data) and POST (send data), to exchange information (CRUD).
+        *  GraphQL (code first) 
+            * In code-first GraphQL, developers start by writing the functions and data they need. They decide what data to fetch or send as they build the application. It's like crafting a story where you create characters and events on the fly, shaping the narrative as you go along.
+        *  GraphQL (schema first) 
+            * In schema-first GraphQL, developers start by defining the data they need. They create a blueprint of the data structure and relationships between objects. It's like creating a storyboard where you plan the characters and events before you start writing the story.
+        *  Microservice (non-HTTP) 
+            * Microservices (like the buffet) break down an application into smaller, independent services. Each service has its own codebase, database, and communication method. It's like a buffet where you can choose from a variety of dishes, each with its own unique flavor.
+        *  WebSockets 
+            * WebSockets (like the chat room) 
+                * WebSockets provide a full-duplex communication channel over a single, long-lived connection. It allows real-time data transfer between the client and server. It's like a chat room where you can send and receive messages instantly.
+* ``` nest g service <service-name> ```
+    * This will create a service file in the services folder
+* ``` nest g module <module-name> ```
+    * This will create a module file in the modules folder
+* ``` nest g controller <controller-name> ```
+    * This will create a controller file in the controllers folder
+
+
+
 ## TECH STACK
 Nodejs
-Next.js
-Firebase Firestore to manage the data
+Nextjs - A nodejs framework for building full stack applications. It uses typescript and is built on top of express. 
+Typescript - A superset of javascript that adds types to the language. It is a statically typed language that compiles down to javascript. 
+Firebase Firestore - A NoSQL database that is part of the firebase suite of tools. It is a document database that stores data in collections and documents.
 
 ## Project Structure
-    Nest.js was used to build this application
 *   Api Layer
     * app.controller was created to handle the CRUD calls coming in getBest_Podcast
 
@@ -19,7 +46,7 @@ Firebase Firestore to manage the data
     * in the interface folder we have defined the domain models
 
 * Data Layer
-    *   firestore folder continas an import javascript that uploads a json file to the podcast database 
+    * firestore folder continas an import javascript that uploads a json file to the podcast collection. 
     * we defined the service account values to access the firebase api
     * we also initialize the firebase within the app.service
 

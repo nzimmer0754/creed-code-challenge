@@ -3,6 +3,7 @@ import * as admin from 'firebase-admin';
 import { Country, Podcast, PodcastFilter } from './interface/CodeChallengeApi';
 import * as fs from 'fs';
 
+// this is the service account key that will be used to authenticate the firebase admin
 const serviceAccountKey = {
   type: 'service_account',
   project_id: 'swiftlogistic-app',
@@ -19,13 +20,15 @@ const serviceAccountKey = {
     'https://www.googleapis.com/robot/v1/metadata/x509/firebase-adminsdk-sre42%40swiftlogistic-app.iam.gserviceaccount.com',
   universe_domain: 'googleapis.com',
 };
+
 // this service will call the database to retreive the data for the best_podcasts endpoint
-@Injectable()
+@Injectable() // this decorator is used to define a class as a provider
 export class AppService {
-  // db is a private global variable that will store the firestore database for AppService
+  // db is a private variable that will store the firestore database for AppService
   private db: FirebaseFirestore.Firestore;
 
-  // initialize firebase fireStore to get the data from the database
+  // using the constructor to initialize firebase fireStore to get the data from the database
+  // also using this to log the initialization of firebase
   constructor() {
     fs.appendFileSync('log.txt', 'Initializing Firebase\n');
     admin.initializeApp({
@@ -38,12 +41,13 @@ export class AppService {
     this.db = admin.firestore();
   }
 
+  // getPodcasts function will be used to get the data for the best_podcasts endpoint
   async getPodcasts(
     page: number,
     region: string,
     safe_mode: string,
     genre_id: string,
-  ): Promise<any> {
+  ): Promise<PodcastFilter> {
     // define the pagination Values
     // define the page start and page end variables
     const pageStart = (page - 1) * 10;
@@ -97,7 +101,7 @@ export class AppService {
       });
 
     // return the data for the best_podcasts endpoint
-    return pagination as any;
+    return pagination as PodcastFilter;
   }
 
   // filter the podcasts by genre and region

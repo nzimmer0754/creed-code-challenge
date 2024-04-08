@@ -1,10 +1,9 @@
 import { Module } from '@nestjs/common';
 import { PodcasteController } from './app.controller';
 import { AppService } from './app.service';
-// Apis are defined in the controller
 
 @Module({
-  imports: [],
+  imports: [], // use this to import other modules. these modules will have thier own controllers and services
   controllers: [PodcasteController],
   providers: [AppService],
 })
